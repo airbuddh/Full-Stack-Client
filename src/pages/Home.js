@@ -17,7 +17,7 @@ function Home() {
     } else{
 
     
-    axios.get("http://localhost:3001/posts", {headers: {accessToken: localStorage.getItem("accessToken")}}).then((response) => {
+    axios.get("https://full-stack-client-eds.herokuapp.com/posts", {headers: {accessToken: localStorage.getItem("accessToken")}}).then((response) => {
        setListOfPosts(response.data.listOfPosts);
        setLikedPosts(response.data.likedPosts.map((like) => {
           return like.PostId;
@@ -26,7 +26,7 @@ function Home() {
   }, [])
 
   const likeAPost = (postId) => {
-     axios.post("http://localhost:3001/likes", { PostId: postId}, 
+     axios.post("https://full-stack-client-eds.herokuapp.com/likes", { PostId: postId}, 
      {headers: {accessToken: localStorage.getItem("accessToken")}}).then((response) => {
        setListOfPosts(listOfPosts.map((post) => {
         if (post.id  === postId){
